@@ -1,21 +1,27 @@
 from django.db import models
-from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager)
+from django.contrib.auth.models import User
 
 
-
-class User(AbstractBaseUser):
-    user_name   = models.CharField(max_length=255, blank=True, null=True)
-    full_name   = models.CharField(max_length=255, blank=True, null=True)
-    email       = models.EmailField(max_length=255, unique=True)
-    age         = models.IntegerField()
-    birth_day   = models.DateField(null=True, blank=True)
-    gender      = models.CharField(max_length=10)
+class UserDetail(models.Model):
+    user            = models.ForeignKey(User, on_delete=models.CASCADE)
+    full_name       = models.CharField(max_length=255)
+    gender          = models.CharField(max_length=255)
+    birth_day       = models.DateField(auto_now=False, auto_now_add=False)
+    money           = models.FloatField(default=50.0)
 
     def __str__(self):
-        return self.user_name
+        return self.full_name
 
 
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    list_friend = models.ManyToManyField(User, related_name='list_friend')
-    money = models.FloatField()
+class ListFriend(models.Model):
+    user            = models.ForeignKey(User,on_delete=models.CASCADE, related_name='user')
+    friend_list     = models.ManyToManyField(User, related_name='friend_list')
+
+
+class History(models.Model):
+    user            = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_history')
+#   room            = models.ForeignKey(Room, related_name='room_history')
+    win_status      = models.BooleanField(default=False)
+    money_bet       = models.FloatField(null=True)
+    def __str__(self):
+        return self.user
