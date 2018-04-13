@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 
     'accounts',
     'history',
-    'room',
+    'rooms',
     'django_extensions',
 ]
 
