@@ -21,7 +21,6 @@ class Room(models.Model):
     max_money       = models.IntegerField(null=True, blank=True)
     max_player      = models.IntegerField(default=16)
     total_player    = models.IntegerField(null=True, blank=True)
-    list_friend     = models.ManyToManyField(User, related_name='list_friend', null=True, blank=True)
     live_url        = models.URLField(max_length=200, null=True, blank=True)
     containner      = models.IntegerField(null=True, blank=True)
 

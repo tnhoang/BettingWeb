@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect,get_object_or_404
 from  .forms import RoomCreation, UpdateTeamWin
 from django.views.generic.edit import FormView
 from django.contrib.auth.models import User
-from .models import Room, Detail
+from .models import Room
 from django.views import generic
 from accounts.models import UserDetail
+
+
 def create_room(request):
     user = User.objects.first()
     form = RoomCreation(request.POST or None)
