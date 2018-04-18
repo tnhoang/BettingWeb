@@ -2,8 +2,8 @@ from django.contrib import admin
 from .models import Room
 
 
-#class RoomAdmin(admin.ModelAdmin):
-#   list_display = ('name', 'description', 'time_start', 'time_end', 'default_money', 'creator')
+class RoomAdmin(admin.ModelAdmin):
+    list_display = ('room_name',  'time_start', 'time_play', 'time_end', 'default_money', 'user_create')
 
 
 #class EnrollmentAdmin(admin.ModelAdmin):
@@ -12,6 +12,6 @@ from .models import Room
 
 #class DetailAdmin(admin.ModelAdmin):
 #    list_display = ('room', 'still_open', 'name_team_A', 'name_team_B')
-admin.site.register(Room)
+admin.site.register(Room, RoomAdmin)
 
 

@@ -24,14 +24,13 @@ class Room(models.Model):
     live_url        = models.URLField(max_length=200, null=True, blank=True)
     containner      = models.IntegerField(null=True, blank=True)
 
-
     def __str__(self):
-        return self.name_room
+        return self.room_name
     
     def save(self, *args, **kwargs):
-        days = self.time_play.split(':')[0]
-        hours = self.time_play.split(':')[1]
-        minutes = self.time_play.split(':')[2]
+        days = int(self.time_play.split(':')[0])
+        hours = int(self.time_play.split(':')[1])
+        minutes = int(self.time_play.split(':')[2])
         self.time_end = datetime.now(tz=timezone.utc) + timedelta(days=days, hours=hours, minutes=minutes)
         super(Room, self).save(*args, **kwargs)
 

@@ -10,20 +10,20 @@ from accounts.models import UserDetail
 def create_room(request):
     user = User.objects.first()
     form = RoomCreation(request.POST or None)
-    context = {'form':form}
+    context = {'form': form}
     if form.is_valid():
-        name_room       = form.cleaned_data.get('name_room')
-        name_team_A       = form.cleaned_data.get('name_team_A')
-        name_team_B       = form.cleaned_data.get('name_team_B')
+        room_name       = form.cleaned_data.get('room_name')
+        name_team_A     = form.cleaned_data.get('name_team_A')
+        name_team_B     = form.cleaned_data.get('name_team_B')
         time_play       = form.cleaned_data.get('time_play')
-        max_player       = form.cleaned_data.get('max_player')
+        max_player      = form.cleaned_data.get('max_player')
         room = Room.objects.create(
-                name_room = name_room,
-                name_team_A = name_team_A,
-                name_team_B = name_team_B,
-                time_play = time_play,
-                max_player = max_player,
-                user_create = user)
+                room_name=room_name,
+                name_team_A=name_team_A,
+                name_team_B=name_team_B,
+                time_play=time_play,
+                max_player=max_player,
+                user_create=user)
         return redirect('/admin/rooms/room/')
     return render(request, 'rooms/create_room.html', context)
 
