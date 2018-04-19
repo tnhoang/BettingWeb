@@ -1,0 +1,18 @@
+{% extends 'rooms/base.html' %}
+{% block create_room %}
+    <ul>
+        <li>
+   {{room.room_name}} 
+        </li>
+        <li>
+   {{room.name_team_A}} vs {{room.name_team_B}} 
+        </li>
+        <li>
+   {{room.id_team_win}} 
+        </li>
+
+        <li>
+   {{room.user_create}} 
+        </li>
+    </ul>
+{% endblock %}

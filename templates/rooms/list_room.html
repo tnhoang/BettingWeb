@@ -1,0 +1,8 @@
+{% extends 'rooms/base.html' %}
+{% block create_room %}
+<ul>
+{% for room in all_room %}
+    <li>{{room}}</li>
+{% endfor %}
+</ul>
+{% endblock %}

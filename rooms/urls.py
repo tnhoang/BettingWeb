@@ -8,5 +8,5 @@ urlpatterns = [
     path('',views.List_Room.as_view(), name='list_room'),
     path('create',views.create_room, name='create_room'),
     path('<int:pk>',views.Detail_Room.as_view(), name='detail_room'),
-    path('<int:pk>/edit',views.update_team_win, name='edit_room'),
+    path('<int:pk>/update',views.update_team_win, name='update_team_win'),
 ]

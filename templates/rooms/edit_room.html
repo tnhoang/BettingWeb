@@ -1,0 +1,9 @@
+{% extends 'rooms/base.html' %}
+{% block create_room %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" >Create</button>
+</form>
+</form>
+{% endblock %}

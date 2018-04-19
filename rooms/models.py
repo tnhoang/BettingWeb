@@ -22,7 +22,7 @@ class Room(models.Model):
     max_player      = models.IntegerField(default=16)
     total_player    = models.IntegerField(null=True, blank=True)
     live_url        = models.URLField(max_length=200, null=True, blank=True)
-    containner      = models.IntegerField(null=True, blank=True)
+    container      = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.room_name
